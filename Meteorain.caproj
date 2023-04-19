@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>Meteorain</name>
+    <description></description>
+    <version>1.0.0.0</version>
+    <author>Marcos Felipe</author>
+    <author-email>marcosfelipe@mfwebdeveloper.net.br</author-email>
+    <author-website>https://www.mfwebdeveloper.net.br</author-website>
+    <app-id>com.mfwebdeveloper.jogopedro</app-id>
+    <unique-id>1iwywecntlar1</unique-id>
+    <saved-with-version>26500</saved-with-version>
+    <used-plugins>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+    </used-plugins>
+    <used-behaviors>
+        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
+        <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
+        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
+    </used-behaviors>
+    <used-effects />
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
+    </configurations>
+    <window-size>
+        <width>720</width>
+        <height>1280</height>
+    </window-size>
+    <pixel-rounding>0</pixel-rounding>
+    <preview-effects>1</preview-effects>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">Yes</prop>
+        <prop name="Downscaling">Medium quality</prop>
+        <prop name="Enable WebGL">On</prop>
+        <prop name="Fullscreen in browser">Letterbox scale</prop>
+        <prop name="Fullscreen scaling">High quality</prop>
+        <prop name="Loader style">Construct 2 splash</prop>
+        <prop name="Orientations">Any</prop>
+        <prop name="Pause on unfocus">No</prop>
+        <prop name="Physics engine">Box2D asm.js</prop>
+        <prop name="Preload sounds">Yes</prop>
+        <prop name="Preview browser">Chrome</prop>
+        <prop name="Sampling">Linear</prop>
+        <prop name="Use high-DPI display">Yes</prop>
+    </configuration-settings>
+    <object-folder>
+        <object-type name="obj_logo" sid="561080168421949">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="452103621082830" speed="5">
+                    <frame duration="1" hotspotX="0.502732" hotspotY="0.502793" original-source="C:\Users\Marcos\Downloads\logo.png">
+                        <collision-poly>
+                            <point x="0.0928962" y="0.0949721" />
+                            <point x="0.907104" y="0.0949721" />
+                            <point x="0.95082" y="0.497207" />
+                            <point x="0.912568" y="0.910615" />
+                            <point x="0.497268" y="0.893855" />
+                            <point x="0.0874317" y="0.910615" />
+                            <point x="0.0437158" y="0.497207" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="obj_colisao" sid="472926273781707">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Solid" sid="423044824749654">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="906667685685694" speed="5">
+                    <frame duration="1" hotspotX="0.513158" hotspotY="0.475904">
+                        <collision-poly>
+                            <point x="0" y="0.0903614" />
+                            <point x="0.493421" y="0" />
+                            <point x="1" y="0.0783132" />
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="obj_player" sid="414609343212916">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Platform" sid="867249546265846">
+                    <behavior id="Platform" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="6" loop="1" name="id_walk" pingpong="0" repeatcount="1" repeatto="0" sid="263265075436264" speed="5">
+                    <frame duration="1" hotspotX="0.51" hotspotY="0.977099" original-source="C:\Users\Marcos\Downloads\g2.png" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.969466" original-source="C:\Users\Marcos\Downloads\g3.png" />
+                    <frame duration="1" hotspotX="0.51" hotspotY="0.977099" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.969466" original-source="C:\Users\Marcos\Downloads\g4.png" />
+                    <frame duration="1" hotspotX="0.51" hotspotY="0.977099" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.969466" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Touch" sid="219140649516443">
+            <plugin id="Touch" />
+        </object-type>
+        <object-type name="obj_inimigo" sid="899869398764598">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Platform" sid="229959290964324">
+                    <behavior id="Platform" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="310251869692353" speed="5">
+                    <frame duration="1" hotspotX="0.471698" hotspotY="0.454545" original-source="C:\Users\Marcos\Downloads\meteory_rain\meteoro1.png">
+                        <collision-poly>
+                            <point x="0" y="0.212672" />
+                            <point x="1" y="0.20303" />
+                            <point x="1" y="0.993939" />
+                            <point x="0" y="0.993939" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="txt_website" sid="318839814030254">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="fundo" sid="744937670339284">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="723088727876938" speed="5">
+                    <frame duration="1" hotspotX="0.50069" hotspotY="0.5" original-source="C:\Users\Marcos\Downloads\meteory_rain\fundo.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="btn_play" sid="137527839169715">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="574854626677117" speed="5">
+                    <frame duration="1" hotspotX="0.501348" hotspotY="0.494949" original-source="C:\Users\Marcos\Downloads\meteory_rain\btn_play.png">
+                        <collision-poly>
+                            <point x="0.0431267" y="0.151515" />
+                            <point x="0.501348" y="0.040404" />
+                            <point x="0.924528" y="0.282828" />
+                            <point x="0.660377" y="0.494949" />
+                            <point x="0.929919" y="0.727273" />
+                            <point x="0.501348" y="0.989899" />
+                            <point x="0.0404313" y="0.848485" />
+                            <point x="0.00269542" y="0.494949" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="logo_jogo" sid="246280561671491">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="738175504008165" speed="5">
+                    <frame duration="1" hotspotX="0.49921" hotspotY="0.496314" original-source="C:\Users\Marcos\Downloads\meteory_rain\logo.png">
+                        <collision-poly>
+                            <point x="0.49763" y="0.459459" />
+                            <point x="0.835703" y="0.262899" />
+                            <point x="0.988942" y="0.496314" />
+                            <point x="0.769352" y="0.626536" />
+                            <point x="0.49763" y="0.658477" />
+                            <point x="0.00631912" y="0.970516" />
+                            <point x="0.176935" y="0.496314" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="txt_score" sid="396992789074975">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="fundo_game" sid="478744142755821">
+            <plugin id="TiledBg" />
+            <texture original-source="C:\Users\Marcos\Downloads\meteory_rain\fundo_game.png" />
+        </object-type>
+        <object-type name="rank" sid="461378258070230">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="620201606069303" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="audio" sid="857628097587155">
+            <plugin id="Audio" />
+        </object-type>
+        <object-type name="txt_mensagem" sid="180102936818089">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="obj_limite" sid="400181844253888">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="969210671306165" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="bg_mensagem" sid="283966865819934">
+            <plugin id="TiledBg" />
+            <texture />
+        </object-type>
+        <object-type name="boom" sid="206129772331160">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Fade" sid="728633700165962">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="628743400758672" speed="5">
+                    <frame duration="1" hotspotX="0.501916" hotspotY="0.5" original-source="C:\Users\Marcos\Downloads\meteory_rain\boom.png">
+                        <collision-poly>
+                            <point x="0.498084" y="0.980392" />
+                            <point x="0.0881226" y="0.455882" />
+                            <point x="0.965517" y="0.54902" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+    </object-folder>
+    <families />
+    <layout-folder>
+        <layout>splash_screen.xml</layout>
+        <layout>menu_play.xml</layout>
+        <layout>game_play.xml</layout>
+    </layout-folder>
+    <event-folder>
+        <event-sheet>splash_events.xml</event-sheet>
+        <event-sheet>game_events.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="Touch" uid="5">
+            <properties>
+                <use-mouse-input>Yes</use-mouse-input>
+            </properties>
+        </global-instance>
+        <global-instance type="audio" uid="17">
+            <properties>
+                <timescale-audio>Off</timescale-audio>
+                <saveload>All</saveload>
+                <play-in-background>No</play-in-background>
+                <positioned-audio></positioned-audio>
+                <panning-model>HRTF</panning-model>
+                <distance-model>Inverse</distance-model>
+                <listener-z-height>600</listener-z-height>
+                <reference-distance>600</reference-distance>
+                <maximum-distance>10000</maximum-distance>
+                <roll-off-factor>1</roll-off-factor>
+            </properties>
+        </global-instance>
+    </global-instances>
+    <sounds-folder />
+    <music-folder />
+    <files-folder>
+        <file-folder name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="icon-256.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+        <file name="adventure-webfont.eot" />
+        <file name="adventure-webfont.svg" />
+        <file name="adventure-webfont.ttf" />
+        <file name="adventure-webfont.woff" />
+        <file name="adventure-webfont.woff2" />
+        <file name="stylesheet.css" />
+    </files-folder>
+</c2project>

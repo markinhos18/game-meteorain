@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>game_events</name>
+    <events>
+        <variable comment="0 = Pre Game, 1 = In Game,  2 = End Game" constant="0" name="var_game_state" sid="999844341351727" static="0" type="number">0</variable>
+        <variable comment="Pontuação do Jogador" constant="0" name="var_score" sid="724399238670957" static="0" type="number">0</variable>
+        <variable comment="0 = esquerda, 1 = direita" constant="0" name="var_direcao" sid="251012754824743" static="0" type="number">1</variable>
+        <event-group description="" sid="484081713688966" title="Sistema">
+            <sub-events>
+                <comment>Exibe a tipografia correta e a pontuação na tela, a todo momento.</comment>
+                <event-block sid="443353732520480">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="833452348890546" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set web font" sid="482858215090657" type="txt_score">
+                            <param id="0" name="Family name">&quot;adventurenormal&quot;</param>
+                            <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="903999829909723">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="351239028254933" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="946039118948874" type="txt_score">
+                            <param id="0" name="Text">&quot;Score &quot; &amp; var_score</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="384867020290674" title="jogador">
+            <sub-events>
+                <comment>Se o jogador estiver no chão, analisa a variável de direção e simula os movimentos</comment>
+                <event-block sid="300988203109646">
+                    <conditions>
+                        <condition behavior="Platform" id="2" name="Is on floor" sid="971134049311664" type="obj_player" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="766724691933248">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="618632242644536" type="System">
+                                    <param id="0" name="Variable">var_direcao</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="641192776263837" type="obj_player">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="918033947867315" type="obj_player">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="464717390717345">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="864399273031111" type="System">
+                                    <param id="0" name="Variable">var_direcao</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="506270875816568" type="obj_player">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                                <action id="7" name="Set mirrored" sid="669532518404694" type="obj_player">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Se tocar na tela ou tocar nos limites inverte a direção</comment>
+                <event-block any="1" sid="343671928093577">
+                    <conditions>
+                        <condition id="0" name="On any touch start" sid="198669075043459" type="Touch" />
+                        <condition id="0" name="On collision with another object" sid="223945881067576" type="obj_player">
+                            <param id="0" name="Object">obj_limite</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="999423170099863">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="422932271041125" type="System">
+                                    <param id="0" name="Variable">var_direcao</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="719148162169193" type="System">
+                                    <param id="0" name="Variable">var_direcao</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="296391221538249">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="136575658241634" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="272742148689078" type="System">
+                                    <param id="0" name="Variable">var_direcao</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="221448379637868" title="Inimigos">
+            <sub-events>
+                <comment>A cada x segundos nasce um novo inimigo na tela</comment>
+                <event-block sid="677755075206615">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="232866973110278" type="System">
+                            <param id="0" name="Interval (seconds)">1.5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="754500601621643" type="System">
+                            <param id="0" name="Object to create">obj_inimigo</param>
+                            <param id="1" name="Layer">&quot;Entities&quot;</param>
+                            <param id="2" name="X">random( 0,LayoutWidth)</param>
+                            <param id="3" name="Y">-150</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Quando o inimigo toca o chão ele é destruido e você ganha um ponto</comment>
+                <event-block sid="410797054842851">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="299459773699546" type="obj_inimigo">
+                            <param id="0" name="Object">obj_colisao</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="764476014582076" type="obj_inimigo">
+                            <param id="0" name="Object">boom</param>
+                            <param id="1" name="Layer">&quot;Entities&quot;</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="425687473340046" type="obj_inimigo" />
+                        <action id="-10" name="Add to" sid="861599978437424" type="System">
+                            <param id="0" name="Variable">var_score</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Quando o inimigo acerta o jogador reinicia o jogo</comment>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="431763051418238" title="Pre Jogo">
+            <sub-events>
+                <comment>O jogo ainda não começou, reseta o score, e mostra mensagem na tela e para o tempo. </comment>
+                <event-block sid="153317249285755">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="862644152782923" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set web font" sid="513240832833847" type="txt_mensagem">
+                            <param id="0" name="Family name">&quot;adventurenormal&quot;</param>
+                            <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="933705354031434">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="311709400006016" type="System">
+                            <param id="0" name="Variable">var_game_state</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="104211614708859" type="System">
+                            <param id="0" name="Variable">var_score</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="682712540511593" type="bg_mensagem">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="303140908910623" type="txt_mensagem">
+                            <param id="0" name="Text">&quot;Tente escapar dos meteoros!&quot; &amp; newline &amp; &quot;Toque na tela para inverter a direção do personagem!&quot;</param>
+                        </action>
+                        <action id="-13" name="Set time scale" sid="674020324665794" type="System">
+                            <param id="0" name="Time scale">0</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="122848197047790" type="obj_player">
+                            <param id="0" name="X">229.266</param>
+                            <param id="1" name="Y">754.842</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Quando toca na tela inicia o jogo!</comment>
+                        <event-block sid="210147895750240">
+                            <conditions>
+                                <condition id="0" name="On any touch start" sid="589778815012132" type="Touch" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="651056416324464" type="System">
+                                    <param id="0" name="Variable">var_game_state</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="937118398644387" type="bg_mensagem">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Destroi todos os inimigos da minha tela.</comment>
+                        <event-block sid="411684580237279">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="529439692261551" type="System">
+                                    <param id="0" name="Object">obj_inimigo</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="656243088306904" type="obj_inimigo" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="494228950603846" title="Durante o Jogo">
+            <sub-events>
+                <comment>O jogo está acontecendo, esconde a mensagem e volta o tempo normal.</comment>
+                <event-block sid="111181301595572">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="139752530840720" type="System">
+                            <param id="0" name="Variable">var_game_state</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="946899291250432" type="txt_mensagem">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-13" name="Set time scale" sid="862687120135766" type="System">
+                            <param id="0" name="Time scale">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="449143231767713">
+                            <conditions>
+                                <condition id="0" name="On collision with another object" sid="664860652087055" type="obj_inimigo">
+                                    <param id="0" name="Object">obj_player</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="916079191173091" type="System">
+                                    <param id="0" name="Variable">var_game_state</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="575008671509933" title="Final do Jogo">
+            <sub-events>
+                <comment>Quando o jogo acaba, aparece o fundo com a mensagem de texto, e ao tocar na tela recomeça o jogo.</comment>
+                <event-block sid="461099313673356">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="342418717073008" type="System">
+                            <param id="0" name="Variable">var_game_state</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="110839935293461" type="bg_mensagem">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="445887985742056" type="txt_mensagem">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="107579362354463" type="txt_mensagem">
+                            <param id="0" name="Text">&quot;Nãoooo!&quot; &amp; newline &amp; &quot;Toque na tela para começar de novo!&quot;</param>
+                        </action>
+                        <action id="-13" name="Set time scale" sid="332328878548192" type="System">
+                            <param id="0" name="Time scale">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="227297349707198">
+                            <conditions>
+                                <condition id="0" name="On any touch start" sid="649214662283517" type="Touch" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="729616296023355" type="System">
+                                    <param id="0" name="Variable">var_game_state</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="709909461152669" type="bg_mensagem">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <comment></comment>
+        <event-group description="" sid="159618506244546" title="musica">
+            <sub-events>
+                <event-block sid="982644928415054">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="117359829527435" type="System" />
+                    </conditions>
+                    <actions />
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>
